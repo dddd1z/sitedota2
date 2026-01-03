@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dota 2 Counter Pick Analyzer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <h1>Dota 2 Counter Pick Analyzer</h1>
+        <p class="subtitle">
+          Выберите героев, анализируйте контрпики и синергию. Базовые данные
+          берутся из OpenDota API.
+        </p>
+      </div>
+      <div class="header-actions">
+        <label class="toggle">
+          <span>Добавлять в</span>
+          <div class="toggle-buttons" id="team-toggle">
+            <button class="toggle-button is-active" data-team="ally">
+              Наши
+            </button>
+            <button class="toggle-button" data-team="enemy">Враги</button>
+          </div>
+        </label>
+        <label class="api-key">
+          <span>STRATZ API ключ (опционально)</span>
+          <input
+            type="password"
+            id="stratz-key"
+            placeholder="Вставьте API ключ, если есть"
+          />
+        </label>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="team-panel">
+        <div class="team-block">
+          <h2>Наша команда</h2>
+          <div class="team-slots" id="ally-slots"></div>
+        </div>
+        <div class="team-block">
+          <h2>Команда противника</h2>
+          <div class="team-slots" id="enemy-slots"></div>
+        </div>
+      </section>
+
+      <section class="analysis-panel">
+        <button class="analyze-button" id="analyze-button">
+          Проанализировать
+        </button>
+        <div class="analysis-status" id="analysis-status">
+          Выберите хотя бы 1 героя врага и нажмите «Проанализировать».
+        </div>
+        <div class="recommendations" id="recommendations"></div>
+      </section>
+
+      <section class="controls">
+        <div class="status" id="status">Загрузка героев...</div>
+        <label class="search">
+          <span>Поиск героя</span>
+          <input type="search" id="hero-search" placeholder="Например: Pudge" />
+        </label>
+      </section>
+
+      <section>
+        <div class="hero-grid" id="hero-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      Данные: OpenDota API · Иконки: Valve CDN · Опционально: STRATZ GraphQL
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
